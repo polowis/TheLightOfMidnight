@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --mode development --open"
   },
   "author": "polowis",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
