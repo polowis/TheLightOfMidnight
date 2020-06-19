@@ -1,8 +1,8 @@
+import AssetsMemoryStorage from '../engine/AssetsMemory';
+
 class ImageView {
-    constructor(src) {
-        this.src = src;
-        this.image = new Image();
-        this.loaded = false;
+    constructor(assetName) {
+        this.image = AssetsMemoryStorage.get(assetName);
         this.scaleWidth = 1;
         this.scaleHeight = 1;
         this.image.addEventListener('error', function (e) {
@@ -13,7 +13,6 @@ class ImageView {
             console.log('Successfully loaded image');
            
         }
-        this.image.src = src;
     }
 
     /**

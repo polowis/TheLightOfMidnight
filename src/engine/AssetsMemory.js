@@ -1,4 +1,4 @@
-
+import AssetNotFoundException from './exception/AssetNotFoundException';
 /**
  * A built in memory map to handle loaded asset
  */
@@ -22,7 +22,12 @@ class AssetsMemory {
      * @param {*} key - Get the asset element by key
      */
     get(key) {
-        this.storage.get(key);
+        if(this.has(key)) {
+            return this.storage.get(key);
+        }
+        throw new AssetNotFoundException("Asset can not be found, make sure you have loaded the asset first")
+
+        
     }
 
     /**
@@ -44,3 +49,7 @@ class AssetsMemory {
 
 
 }
+
+const AssetsMemoryStorage = new AssetsMemory();
+
+export default AssetsMemoryStorage;
