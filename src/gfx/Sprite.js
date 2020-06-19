@@ -6,12 +6,13 @@
  * @param {*} sHeight - The height of clipped image in pixels
  */
 class Sprite {
-    constructor(src, sx, sy, sWidth, sHeight) {
+    constructor(src, sx, sy = sx, sWidth, sHeight = sWidth) {
         this.sx = sx;
         this.sy = sy;
         this.sWidth = sWidth;
-        this.sHeight = sWidth || sHeight;
-        this.scale = 1;
+        this.sHeight = sHeight;
+        this.scaleWidth = 1;
+        this.scaleHeight = 1;
         this.image = new Image();
         this.loaded = false;
         this.image.addEventListener('error', function (e) {
@@ -26,7 +27,31 @@ class Sprite {
         
     }
 
-    setScale()
+    /**
+     * Set scale for the image. By default scaleHeight alwways equal to scaleWidth
+     * @param {*} scaleWidth - The width of the clipped image to use 
+     * @param {*} scaleHeight {optional} - The height of the clipped image to use
+     */
+    setScale(scaleWidth, scaleHeight = scaleWidth) {
+        this.scaleWidth = scaleWidth;
+        this.scaleHeight = scaleHeight;
+    }
+
+    /**
+     * 
+     * @param {*} scaleWidth - The width of the clipped image to use
+     */
+    setScaleWidth(scaleWidth) { 
+        this.scaleWidth = scaleWidth;
+    }
+
+    /**
+     * 
+     * @param {*} scaleHeight - The height of the clipped image to use
+     */
+    setScaleHeight(scaleHeight) {
+        this.scaleHeight = scaleHeight;
+    }
 
     /**
      * Draw Sprite onto canvas
@@ -36,8 +61,15 @@ class Sprite {
      */
     render(context, x = 0, y = 0) {
         let loadedImage = this.image;
+        let scaleHeight = this.scaleHeight;
+        let scaleWidth = this.scaleWidth;
+        let sx = this.sx;
+        let sy = this.sy;
+        let sWidth = this.sWidth;
+        let sHeight = this.sHeight;
+        
         loadedImage.onload = function() {
-            context.drawImage(loadedImage, x, y);
+            context.drawImage(loadedImage, sx, sy, sWidth, sHeight, x, y, sWidth * scaleWidth, sHeight * scaleHeight);
         }
         
     }
