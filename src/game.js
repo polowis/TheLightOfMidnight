@@ -2,12 +2,14 @@ import Player from './entity/Player'
 import Sprite from './gfx/sprite';
 import ImageView from './gfx/ImageView';
 import Scene from './engine/Scene';
+import AssetsMemoryStorage from './engine/AssetsMemory'
 
 class TheLightOfMidnight extends Scene {
 
     constructor(canvas) {
         super(canvas);
         this.debug = true;
+        this.canvas = canvas;
     }
     /**
      * Load game assets
@@ -21,6 +23,7 @@ class TheLightOfMidnight extends Scene {
      */
     render() {
         this.renderImage("background", 0, 0)
+        //this.canvas.context.drawImage(AssetsMemoryStorage.get("background"), 0, 0);
     }
 }
 
