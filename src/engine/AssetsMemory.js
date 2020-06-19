@@ -24,9 +24,9 @@ class AssetsMemory {
     get(key) {
         if(this.has(key)) {
             return this.storage.get(key);
+        } else{
+            throw new AssetNotFoundException("Asset can not be found, make sure you have loaded the asset first")
         }
-        throw new AssetNotFoundException("Asset can not be found, make sure you have loaded the asset first")
-
         
     }
 

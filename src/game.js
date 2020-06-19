@@ -1,24 +1,26 @@
 import Player from './entity/Player'
 import Sprite from './gfx/sprite';
 import ImageView from './gfx/ImageView';
+import Scene from './engine/Scene';
 
-class TheLightOfMidnight {
+class TheLightOfMidnight extends Scene {
 
     constructor(canvas) {
-        this.canvas = canvas;
+        super(canvas);
+        this.debug = true;
     }
     /**
      * Load game assets
      */
     load() {
-        this.player = new Sprite("https://opengameart.org/sites/default/files/house7_0.gif")
+        this.loadImage("https://opengameart.org/sites/default/files/house7_0.gif", "background")
     }
 
     /**
      * Render onto canvas
      */
     render() {
-        this.player.render(this.canvas.context, 0, 0)
+        this.renderImage("background", 0, 0)
     }
 }
 

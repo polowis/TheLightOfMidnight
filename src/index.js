@@ -5,7 +5,9 @@ import TheLightOfMidnight from './game.js';
 const game = new TheLightOfMidnight(new Game());
 
 game.load();
-game.render();
+setTimeout(game.render, 3000)
+
+
 
 
 
