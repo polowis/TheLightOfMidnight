@@ -1,5 +1,6 @@
-import Game from './engine/game';
+import Player from './entity/Player'
 import Sprite from './gfx/sprite';
+import ImageView from './gfx/ImageView';
 
 class TheLightOfMidnight {
 
@@ -11,7 +12,6 @@ class TheLightOfMidnight {
      */
     load() {
         this.player = new Sprite("https://opengameart.org/sites/default/files/house7_0.gif")
-        //player.render(game.context, 0, 0)
     }
 
     /**
