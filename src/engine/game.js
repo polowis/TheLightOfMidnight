@@ -18,6 +18,9 @@ class Game{
         this.bodyElement = document.querySelector("body")
         this.bodyElement.style.margin = "0px";
 
+        // change the background color
+        this.bodyElement.style.bgColor = "#000000";
+
     }
 }
 
