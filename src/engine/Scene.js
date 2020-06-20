@@ -28,6 +28,7 @@ class Scene {
      * @param {*} key - The key associated with the image. This will be used to retrieve the image later.
      */
     loadImage(src, key) {
+        if(AssetsMemoryStorage.has(key)) return;
         this.numberOfAssets++;
 
         let image = new Image();
@@ -48,11 +49,22 @@ class Scene {
     /**
      * Render image to canvas
      * @param {*} key - key to search
-     * @param {*} x - x coordinate where to place the image on the canvas
-     * @param {*} y - y coordinate where to place the image on the canvas
+     * @param {*} px - x coordinate where to place the image on the canvas
+     * @param {*} py - y coordinate where to place the image on the canvas
+     * @param {} options - Optional value to display image {imageWidth, imageHeight, imageScaleWidth, imageScaleHeight}
      */
-    renderImage(key, x = 0, y = x) {
-        this.canvas.context.drawImage(AssetsMemoryStorage.get(key), x, y);
+    renderImage(key, px = 0, py = px, options) {
+        let options = options || {};
+
+        let image = AssetsMemoryStorage.get(key);
+
+        let imageWidth = options.width || image.width;
+        let imageHeight = options.height || image.height;
+        let imageScaleWidth = options.scaleWidth || 1;
+        let imageScaleHeight = options.scaleHeight || 1;
+        let imageAlpha = options.alpha || 1;
+
+        this.canvas.context.drawImage(image, px, py, imageWidth * imageScaleWidth, imageHeight * imageScaleHeight);
     }
 
     /**
