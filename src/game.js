@@ -22,7 +22,7 @@ class TheLightOfMidnight extends Scene {
      * Render onto canvas
      */
     render() {
-        this.renderImage("background", 0, 0)
+        this.renderImage("background")
         //this.canvas.context.drawImage(AssetsMemoryStorage.get("background"), 0, 0);
     }
 }
