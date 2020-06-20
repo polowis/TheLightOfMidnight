@@ -14,7 +14,7 @@ class TheLightOfMidnight extends Scene {
     /**
      * Load game assets
      */
-    load() {
+    preload() {
         this.loadImage("https://opengameart.org/sites/default/files/house7_0.gif", "background")
     }
 
