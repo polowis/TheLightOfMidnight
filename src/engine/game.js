@@ -19,7 +19,7 @@ class Game{
         this.bodyElement.style.margin = "0px";
 
         // change the background color
-        this.bodyElement.style.bgColor = "#000000";
+        this.bodyElement.style.backgroundColor = "black";
 
     }
 }
