@@ -48,16 +48,16 @@ class Scene {
 
     /**
      * Render image to canvas
-     * @param {*} key - key to search
-     * @param {*} px - x coordinate where to place the image on the canvas
-     * @param {*} py - y coordinate where to place the image on the canvas
-     * @param {} args - Optional value to display image {imageWidth, imageHeight, imageScaleWidth, imageScaleHeight}
+     * @param {string} key - key to search
+     * @param {Object} args - Optional value to display image {imageWidth, imageHeight, imageScaleWidth, imageScaleHeight}
      */
-    renderImage(key, px = 0, py = px, args) {
+    renderImage(key, args) {
         let options = args || {};
 
         let image = AssetsMemoryStorage.get(key);
 
+        let offsetX = options.x || image.x;
+        let offsetY = options.y || image.y;
         let imageWidth = options.width || image.width;
         let imageHeight = options.height || image.height;
         let imageScaleWidth = options.scaleWidth || 1;
@@ -66,9 +66,7 @@ class Scene {
 
         this.canvas.context.save();
         this.canvas.context.globalAlpha = imageAlpha;
-
-        this.canvas.context.drawImage(image, px, py, imageWidth * imageScaleWidth, imageHeight * imageScaleHeight);
-
+        this.canvas.context.drawImage(image, offsetX, offsetY, imageWidth * imageScaleWidth, imageHeight * imageScaleHeight);
         this.canvas.context.restore()
     }
 
