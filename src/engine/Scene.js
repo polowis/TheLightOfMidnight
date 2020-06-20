@@ -51,10 +51,10 @@ class Scene {
      * @param {*} key - key to search
      * @param {*} px - x coordinate where to place the image on the canvas
      * @param {*} py - y coordinate where to place the image on the canvas
-     * @param {} options - Optional value to display image {imageWidth, imageHeight, imageScaleWidth, imageScaleHeight}
+     * @param {} args - Optional value to display image {imageWidth, imageHeight, imageScaleWidth, imageScaleHeight}
      */
-    renderImage(key, px = 0, py = px, options) {
-        let options = options || {};
+    renderImage(key, px = 0, py = px, args) {
+        let options = args || {};
 
         let image = AssetsMemoryStorage.get(key);
 
@@ -64,7 +64,12 @@ class Scene {
         let imageScaleHeight = options.scaleHeight || 1;
         let imageAlpha = options.alpha || 1;
 
+        this.canvas.context.save();
+        this.canvas.context.globalAlpha = imageAlpha;
+
         this.canvas.context.drawImage(image, px, py, imageWidth * imageScaleWidth, imageHeight * imageScaleHeight);
+
+        this.canvas.context.restore()
     }
 
     /**
