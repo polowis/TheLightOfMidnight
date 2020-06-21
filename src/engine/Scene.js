@@ -1,5 +1,6 @@
 import Sprite from '../gfx/Sprite';
 import AssetsMemoryStorage from './AssetsMemory';
+import Texture from '../gfx/Texture';
 class Scene {
     constructor(canvas) {
         this.numberOfLoadedAssets = 0;
@@ -31,43 +32,22 @@ class Scene {
         if(AssetsMemoryStorage.has(key)) return;
         this.numberOfAssets++;
 
-        let image = new Image();
-        image.addEventListener('error', (e) => {
-            console.error("error loading image:", image, e);
-        });
-        image.addEventListener("load", () => {
-            this.numberOfLoadedAssets++;
-            if(this.debug) {
-                console.info(`Loaded image at: ${image}`);
-            }
-            AssetsMemoryStorage.set(key, image);
-        });
-        image.src = src;
-
+        let image = new Texture(this.canvas.context, src, key);
+        image.load(this.debug);
+        this.numberOfLoadedAssets++
     }
 
     /**
      * Render image to canvas
      * @param {string} key - key to search
-     * @param {Object} args - Optional value to display image {imageWidth, imageHeight, imageScaleWidth, imageScaleHeight}
+     * @param {Object} options - Optional value to display image {imageWidth, imageHeight, imageScaleWidth, imageScaleHeight}
      */
-    renderImage(key, args) {
-        let options = args || {};
+    renderImage(key, options) {
 
         let image = AssetsMemoryStorage.get(key);
 
-        let offsetX = options.x || image.x;
-        let offsetY = options.y || image.y;
-        let imageWidth = options.width || image.width;
-        let imageHeight = options.height || image.height;
-        let imageScaleWidth = options.scaleWidth || 1;
-        let imageScaleHeight = options.scaleHeight || 1;
-        let imageAlpha = options.alpha || 1;
-
-        this.canvas.context.save();
-        this.canvas.context.globalAlpha = imageAlpha;
-        this.canvas.context.drawImage(image, offsetX, offsetY, imageWidth * imageScaleWidth, imageHeight * imageScaleHeight);
-        this.canvas.context.restore()
+        image.update(options);
+        image.render();
     }
 
     /**
