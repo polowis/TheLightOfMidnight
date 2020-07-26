@@ -1,4 +1,4 @@
-import AssetNotFoundException from './exception/AssetNotFoundException';
+import AssetNotFoundException from '../exception/AssetNotFoundException';
 /**
  * A built in memory map to handle loaded asset
  */
