@@ -9,7 +9,7 @@ class StateManagement {
     }
 
     execute(sceneID) {
-        const scene = SceneStorage.get(id)
+        const scene = SceneStorage.get(sceneID)
         scene.preload();
         function loop(timeStamp) {
             let progress = timeStamp - lastRender
