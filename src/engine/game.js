@@ -1,10 +1,10 @@
 /**
  * 
- * @param {optional} width - The width of canvas - default is 700
- * @param {optional} height - The height of canvas - default is 700
+ * @param {optional} width - The width of canvas - default is window.innerWidth
+ * @param {optional} height - The height of canvas - default is window.innerHeight
  */
 class Game{
-    constructor(width = 700, height = 700) {
+    constructor(width = window.innerWidth, height = window.innerHeight) {
         this.canvas = document.createElement('canvas');
         this.canvas.id = 'canvas';
         this.canvas.width = width;
