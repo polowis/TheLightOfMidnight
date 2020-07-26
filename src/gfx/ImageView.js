@@ -1,4 +1,4 @@
-import AssetsMemoryStorage from '../engine/AssetsMemory';
+import AssetsMemoryStorage from '../engine/storage/AssetsMemory';
 
 /**
  * Class responsible for handling static image \n
@@ -54,6 +54,19 @@ class ImageView {
         this.alpha = alphaValue;
     }
 
+    setWidth(value) {
+        this.image.width = value;
+    }
+
+    setHeight(value) {
+        this.image.height = value;
+    }
+
+    setDimension(value) {
+        this.setHeight(value)
+        this.setWidth(value)
+    }
+
     /**
      * 
      * @param {*} context - canvas element
@@ -61,8 +74,8 @@ class ImageView {
      * @param {*} y - The y coordinate where to place the image on the canvas
      */
     render(x = 0, y = 0) {
-
-        context.drawImage(this.image, this.x, this.y, this.image.width * this.scaleWidth, this.image.height * this.scaleHeight)
+        
+        this.canvas.context.drawImage(this.image, this.x, this.y, this.image.width * this.scaleWidth, this.image.height * this.scaleHeight)
     }
 }
 
