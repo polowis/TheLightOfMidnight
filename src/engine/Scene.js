@@ -1,12 +1,15 @@
 import Sprite from '../gfx/Sprite';
-import AssetsMemoryStorage from './AssetsMemory';
+import AssetsMemoryStorage from './storage/AssetsMemory';
 import Texture from '../gfx/Texture';
+import SceneStorage from './storage/SceneMemoryStorage';
+
 class Scene {
     constructor(canvas) {
         this.numberOfLoadedAssets = 0;
         this.numberOfAssets = 0;
         this.debug = false;
         this.canvas = canvas;
+        //SceneStorage.add(id, sceneObject)
 
 
     }
@@ -61,6 +64,15 @@ class Scene {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Change scene
+     * @param {*} id - ID of the scene to change
+     */
+    goToScene(id) {
+        SceneStorage.get(id).preload()
+        SceneStorage.get(id).render()
     }
 
 
