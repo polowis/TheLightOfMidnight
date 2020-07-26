@@ -1,4 +1,4 @@
-import AssetsMemoryStorage from '../engine/AssetsMemory'
+import AssetsMemoryStorage from '../engine/storage/AssetsMemory'
 
 /**
  * Class responsible for handling image
@@ -51,7 +51,7 @@ class Texture extends Image{
         this.scaleHeight = options.scaleHeight || 1;
         this.alpha = options.alpha || 1;
 
-        AssetsMemoryStorage.set(this.textureName, this)
+        //AssetsMemoryStorage.set(this.textureName, this)
 
     }
 
@@ -69,7 +69,15 @@ class Texture extends Image{
             }
             AssetsMemoryStorage.set(this.textureName, this);
         });
-        this.src = this.imagePath;
+        this.setImagePath();
+    }
+
+    /**
+     * Set path for the image
+     * @param {*} src - Set path for the image {optional}
+     */
+    setImagePath(src = this.imagePath) {
+        this.src = src;
     }
 }
 
