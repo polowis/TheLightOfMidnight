@@ -14,6 +14,14 @@ class Scene {
 
     }
 
+    loadScript(id, src) {
+        const script = document.createElement('script');
+        script.onload = () => {  
+            this.numberOfLoadedAssets ++
+        }
+        script.src = src;
+    }
+
     /**
      * load Sprite from
      * @param {*} src 
