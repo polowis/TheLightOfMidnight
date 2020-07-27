@@ -16,7 +16,6 @@ class Intro extends Scene {
     preload() {
         this.loadImage(IntroImage, "introBackground")
         this.scrollValue = 0;
-        this.bg2 = 0;
         this.imageData = {}
     }
 
@@ -35,8 +34,6 @@ class Intro extends Scene {
         this.canvas.context.drawImage(this.bg.image, this.scrollValue - this.canvas.width, 0, this.bg.image.width * this.bg.scaleWidth, this.bg.image.height * this.bg.scaleHeight)
 
         let speedNormalize = 3;
-        let widthNormalize = this.bg.image.width;
-
         this.scrollValue += speedNormalize
         if(this.scrollValue >= this.canvas.width) {
             this.scrollValue = 0;

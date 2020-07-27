@@ -1,3 +1,4 @@
+import AssetsMemoryStorage from '../engine/storage/AssetsMemory'
 /**
  * @param {*} src - The src of the image
  * @param {*} sX - The x coordinate where to start clipping
@@ -67,12 +68,12 @@ class Sprite {
         let sy = this.sy;
         let sWidth = this.sWidth;
         let sHeight = this.sHeight;
+
+        //context.drawImage(loadedImage, sx, sy, sWidth, sHeight, x, y, sWidth * scaleWidth, sHeight * scaleHeight);
         
-        loadedImage.onload = function() {
-            context.drawImage(loadedImage, sx, sy, sWidth, sHeight, x, y, sWidth * scaleWidth, sHeight * scaleHeight);
-        }
         
     }
+    
 }
 
 export default Sprite;

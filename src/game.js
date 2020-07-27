@@ -2,7 +2,7 @@ import Player from './entity/Player'
 import Sprite from './gfx/sprite';
 import ImageView from './gfx/ImageView';
 import Scene from './engine/Scene';
-import AssetsMemoryStorage from './engine/AssetsMemory'
+import AssetsMemoryStorage from './engine/storage/AssetsMemory'
 
 class TheLightOfMidnight extends Scene {
 
