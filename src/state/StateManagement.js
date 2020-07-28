@@ -1,4 +1,4 @@
-import SceneStorage from '../engine/storage/SceneMemoryStorage'
+import SceneMemoryStorage from '../engine/storage/SceneMemoryStorage'
 class StateManagement {
     constructor() {
 
@@ -9,7 +9,7 @@ class StateManagement {
     }
 
     execute(sceneID) {
-        const scene = SceneStorage.get(sceneID)
+        const scene = SceneMemoryStorage.get(sceneID)
         scene.preload();
         function loop(timeStamp) {
             let progress = timeStamp - lastRender
