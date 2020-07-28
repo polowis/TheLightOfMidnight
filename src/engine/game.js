@@ -1,3 +1,4 @@
+import SceneMemory from './storage/SceneMemory'
 /**
  * 
  * @param {optional} width - The width of canvas - default is window.innerWidth
@@ -20,6 +21,12 @@ class Game{
 
         // change the background color
         this.bodyElement.style.backgroundColor = "black";
+
+    }
+
+    playScene(id) {
+        const scene = SceneMemory.get(id)
+
 
     }
 }

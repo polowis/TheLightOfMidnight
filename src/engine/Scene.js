@@ -1,14 +1,15 @@
 import Sprite from '../gfx/Sprite';
 import AssetsMemoryStorage from './storage/AssetsMemory';
 import Texture from '../gfx/Texture';
-import SceneStorage from './storage/SceneMemoryStorage';
+import SceneStorage from './storage/SceneMemory';
+import SceneMemoryStorage from './storage/SceneMemory';
 
-class Scene {
+class Scene extends Game {
     constructor(canvas) {
         this.numberOfLoadedAssets = 0;
         this.numberOfAssets = 0;
         this.debug = false;
-        this.canvas = canvas;
+        this.canvas = canvas
         //SceneStorage.add(id, sceneObject)
 
 
@@ -79,8 +80,20 @@ class Scene {
      * @param {*} id - ID of the scene to change
      */
     goToScene(id) {
-        SceneStorage.get(id).preload()
-        SceneStorage.get(id).render()
+        const scene = SceneMemoryStorage.get(id);
+        scene.preload();
+
+        function loop(timeStamp) {
+            let progress = timeStamp - lastRender
+            scene.update(progress)
+            lastRender = timeStamp
+            window.requestAnimationFrame(loop)
+
+        }
+        var lastRender = 0
+        setTimeout(() => { 
+            scene.render()
+            window.requestAnimationFrame(loop)}, 2000)
     }
 
 

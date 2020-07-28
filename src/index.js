@@ -1,12 +1,14 @@
 
-import Game from './engine/game';
+import Game from './engine/Game';
 import TheLightOfMidnight from './game.js';
 import Intro from './state/Intro'
+import SceneMemory from './engine/storage/SceneMemory'
+import Scene from './engine/Scene';
 
-//const game = new TheLightOfMidnight(new Game());
+SceneMemory.add('intro', Intro)
+
 const game = new Intro(new Game());
 game.preload();
-
 
 function loop(timeStamp) {
     let progress = timeStamp - lastRender
