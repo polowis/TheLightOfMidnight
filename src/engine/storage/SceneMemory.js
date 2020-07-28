@@ -1,4 +1,4 @@
-class SceneMemoryStorage {
+class SceneMemory {
     constructor() {
         this.storage = new Map();
     }
@@ -10,8 +10,12 @@ class SceneMemoryStorage {
     get(id) {
         return this.storage.get(id);
     }
+
+    has(id) {
+        return this.storage.has(id);
+    }
 }
 
-const SceneStorage = new SceneMemoryStorage();
+const SceneMemoryStorage = new SceneMemory();
 
-export default SceneStorage;
+export default SceneMemoryStorage;
