@@ -1,4 +1,4 @@
-import SceneMemoryStorage from '../engine/storage/SceneMemoryStorage'
+import SceneMemoryStorage from '../engine/storage/SceneStorage'
 class StateManagement {
     constructor() {
 
