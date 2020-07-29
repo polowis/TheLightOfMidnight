@@ -4,7 +4,7 @@ import Texture from '../gfx/Texture';
 import SceneStorage from './storage/SceneMemory';
 import SceneMemoryStorage from './storage/SceneMemory';
 
-class Scene extends Game {
+class Scene {
     constructor(canvas) {
         this.numberOfLoadedAssets = 0;
         this.numberOfAssets = 0;
@@ -52,12 +52,10 @@ class Scene extends Game {
     /**
      * Render image to canvas
      * @param {string} key - key to search
-     * @param {Object} options - Optional value to display image {imageWidth, imageHeight, imageScaleWidth, imageScaleHeight}
+     * @param {Object} options - Optional value to display image {offsetX, offsetY, imageWidth, imageHeight, imageScaleWidth, imageScaleHeight, alpha}
      */
     renderImage(key, options) {
-
         let image = AssetsMemoryStorage.get(key);
-
         image.update(options);
         image.render();
     }
