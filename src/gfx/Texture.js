@@ -20,6 +20,7 @@ class Texture extends Image{
         this.scaleWidth = 1;
         this.offsetX = 0;
         this.offsetY = 0;
+        this.scale = 1;
         
     }
 
@@ -29,6 +30,7 @@ class Texture extends Image{
     render() {
         this.context.save();
         this.context.globalAlpha = this.alpha;
+        this.context.clearRect(0, 0, window.innerWidth, window.innerHeight);
         this.context.drawImage(this, this.offsetX, this.offsetY, this.width * this.scaleWidth, this.height * this.scaleHeight);
         this.context.restore()
 
@@ -50,7 +52,6 @@ class Texture extends Image{
         this.scaleWidth = options.scaleWidth || 1;
         this.scaleHeight = options.scaleHeight || 1;
         this.alpha = options.alpha || 1;
-
         //AssetsMemoryStorage.set(this.textureName, this)
 
     }
@@ -78,6 +79,18 @@ class Texture extends Image{
      */
     setImagePath(src = this.imagePath) {
         this.src = src;
+    }
+
+    setScaleWidth(width) {
+        this.scaleWidth = width;
+    }
+
+    setScaleHeight(height) {
+        this.scaleHeight = height;
+    }
+
+    setAlpha(alpha) {
+        this.alpha = alpha;
     }
 }
 
