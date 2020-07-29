@@ -17,8 +17,6 @@ class Intro extends Scene {
         this.rainParticles = [];
     }
 
-    
-
     loadRainEffect() {
         this.canvas.context.strokeStyle = 'rgba(174,194,224,0.5)';
         this.canvas.context.lineWidth = 1;
@@ -40,9 +38,9 @@ class Intro extends Scene {
             this.rainParticles[b] = this.initRain[b];
         }
     }
+
     drawRainEffect() {
         this.loadRainEffect()
-        //this.canvas.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         for (var c = 0; c < this.rainParticles.length; c++) {
             let p = this.rainParticles[c];
             this.canvas.context.beginPath();
@@ -64,6 +62,7 @@ class Intro extends Scene {
             }
         }
     }
+
     preload() {
         this.loadImage(IntroImage, "introBackground")
         this.initRainEffect()
