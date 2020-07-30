@@ -1,11 +1,12 @@
 import Scene from '../engine/Scene'
 import IntroImage from '../../src/assets/background/IntroBackground.jpg'
 import ImageView from '../gfx/ImageView'
+import KeyboardEvent from '../engine/event/keyboard/Keyboard'
 
 class Intro extends Scene {
     constructor(canvas) {
         super(canvas)
-        this.id = 'll';
+        this.id = 'intro';
         this.canvas = canvas;
         this.debug = true;    
         this.alpha = 1;
@@ -15,6 +16,7 @@ class Intro extends Scene {
         this.alphaIncreased = false;
         this.initRain = [];
         this.rainParticles = [];
+        this.maxRainParticles = 1000;
     }
 
     loadRainEffect() {
@@ -24,8 +26,7 @@ class Intro extends Scene {
     }
 
     initRainEffect() {
-        let maxParts = 1000;
-        for (var a = 0; a < maxParts; a++) {
+        for (let i = 0; i < this.maxRainParticles; i++) {
         this.initRain.push({
             x: Math.random() * this.canvas.width,
             y: Math.random() * this.canvas.height,
@@ -34,15 +35,15 @@ class Intro extends Scene {
             ys: Math.random() * 10 + 10
         })
         }
-        for (var b = 0; b < maxParts; b++) {
-            this.rainParticles[b] = this.initRain[b];
+        for (let i = 0; i < this.maxRainParticles; i++) {
+            this.rainParticles[i] = this.initRain[i];
         }
     }
 
     drawRainEffect() {
         this.loadRainEffect()
-        for (var c = 0; c < this.rainParticles.length; c++) {
-            let p = this.rainParticles[c];
+        for (let i = 0; i < this.rainParticles.length; i++) {
+            let p = this.rainParticles[i];
             this.canvas.context.beginPath();
             this.canvas.context.moveTo(p.x, p.y);
             this.canvas.context.lineTo(p.x + p.l * p.xs, p.y + p.l * p.ys);
@@ -52,8 +53,8 @@ class Intro extends Scene {
     }
 
     moveRain() {
-        for (let b = 0; b < this.rainParticles.length; b++) {
-            let p = this.rainParticles[b];
+        for (let i = 0; i < this.rainParticles.length; i++) {
+            let p = this.rainParticles[i];
             p.x += p.xs;
             p.y += p.ys;
             if (p.x > this.canvas.width || p.y > this.canvas.height) {
@@ -71,25 +72,12 @@ class Intro extends Scene {
     render() {
         this.renderImage('introBackground', {alpha: 0.7})
         this.drawRainEffect()
-        
     }
 
     update(speed) {
-        if(!this.alphaIncreased && Math.floor(Date.now() / this.frequency) % 2) {
-            this.alpha -= 0.1
-            if(this.alpha <= this.minOpacity) {
-                this.alpha = this.minOpacity;
-                this.alphaIncreased = true;
-            }
+        if(KeyboardEvent.isKeyPressed()) {
+            console.log('tr')
         }
-        
-        if(this.alphaIncreased && Math.floor(Date.now() / this.frequency) % 2) {
-            this.alpha += 0.1
-            if(this.alpha < 0.9) {
-                this.alpha = 1;
-                this.alphaIncreased = false;;
-            }
-        } 
 
     }
 }

@@ -2,10 +2,12 @@
 import Game from './engine/Game';
 import Intro from '../src/state/Intro'
 import SceneMemory from './engine/storage/SceneMemory'
+import InputEvent from './engine/event/InputEvent.js'
 
 //SceneMemory.add('intro', Intro)
 
 const game = new Intro(new Game());
+new InputEvent().listen()
 game.preload();
 
 function loop(timeStamp) {
