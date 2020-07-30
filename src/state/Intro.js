@@ -1,5 +1,5 @@
 import Scene from '../engine/Scene'
-import IntroImage from '../../src/assets/background/IntroBackground.jpg'
+import IntroImage from '../../src/assets/background/IntroBackground.png'
 import ImageView from '../gfx/ImageView'
 import KeyboardEvent from '../engine/event/keyboard/Keyboard'
 
