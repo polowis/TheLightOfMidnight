@@ -59,8 +59,9 @@ class Texture extends Image{
     /**
      * Load image
      * @param {boolean} debug - set to true to display debug information
+     * @param {*} callback - A callback function
      */
-    load(debug=false) {
+    load(debug=false, callback) {
         this.addEventListener('error', (e) => {
             console.error("error loading image:", this, e);
         });
@@ -69,6 +70,7 @@ class Texture extends Image{
                 console.info(`Loaded image at: ${this}`);
             }
             AssetsMemoryStorage.set(this.textureName, this);
+            callback();
         });
         this.setImagePath();
     }
