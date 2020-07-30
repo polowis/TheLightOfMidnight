@@ -1,3 +1,3 @@
 # TheLightOfMidnight
 
-<img src="src/assets/background/IntroBackground.jpg">
+<img src="src/assets/background/IntroBackground.png">
