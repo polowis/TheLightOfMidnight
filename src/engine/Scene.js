@@ -10,6 +10,7 @@ class Scene {
         this.numberOfAssets = 0;
         this.debug = false;
         this.canvas = canvas
+        this.loadedAssets = false;
         //SceneStorage.add(id, sceneObject)
 
 
@@ -47,6 +48,10 @@ class Scene {
         let image = new Texture(this.canvas.context, src, key);
         image.load(this.debug);
         this.numberOfLoadedAssets++
+    }
+
+    loadAudio(src, key) {
+
     }
 
     /**
