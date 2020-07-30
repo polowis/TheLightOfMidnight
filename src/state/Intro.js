@@ -9,7 +9,7 @@ class Intro extends Scene {
         this.id = 'intro';
         this.canvas = canvas;
         this.debug = true;    
-        this.alpha = 1;
+        this.alpha = 0.8;
         this.scale = 0.8;
         this.minOpacity = 0.4;
         this.frequency = 1;
@@ -70,7 +70,7 @@ class Intro extends Scene {
     }
 
     render() {
-        this.renderImage('introBackground', {alpha: 0.7})
+        this.renderImage('introBackground', {alpha: this.alpha})
         this.drawRainEffect()
     }
 
