@@ -27,13 +27,13 @@ class Intro extends Scene {
 
     initRainEffect() {
         for (let i = 0; i < this.maxRainParticles; i++) {
-        this.initRain.push({
-            x: Math.random() * this.canvas.width,
-            y: Math.random() * this.canvas.height,
-            l: Math.random() * 1,
-            xs: -4 + Math.random() * 4 + 2,
-            ys: Math.random() * 10 + 10
-        })
+            this.initRain.push({
+                x: Math.random() * this.canvas.width,
+                y: Math.random() * this.canvas.height,
+                l: Math.random() * 1,
+                xs: -4 + Math.random() * 4 + 2,
+                ys: Math.random() * 10 + 10
+            })
         }
         for (let i = 0; i < this.maxRainParticles; i++) {
             this.rainParticles[i] = this.initRain[i];
