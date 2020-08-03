@@ -16,7 +16,6 @@ class StateManagement {
             game.update(progress)
             lastRender = timeStamp
             window.requestAnimationFrame(loop)
-
         }
         var lastRender = 0
         setTimeout(() => { 

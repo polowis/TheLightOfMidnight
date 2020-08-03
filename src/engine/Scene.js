@@ -11,6 +11,7 @@ class Scene {
         this.debug = false;
         this.canvas = canvas
         this.loadedAssets = false;
+        this.loadingPercentage = 0;
         //SceneStorage.add(id, sceneObject)
 
 
@@ -46,8 +47,11 @@ class Scene {
         this.numberOfAssets++;
 
         let image = new Texture(this.canvas.context, src, key);
-        image.load(this.debug);
-        this.numberOfLoadedAssets++
+        image.load(this.debug, () => {
+            this.numberOfLoadedAssets++
+            this.loadingPercentage = this.numberOfAssets / this.numberOfLoadedAssets * 100
+            this.allAssetsLoaded()
+        });
     }
 
     loadAudio(src, key) {
