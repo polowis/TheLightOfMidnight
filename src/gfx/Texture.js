@@ -83,17 +83,51 @@ class Texture extends Image{
         this.src = src;
     }
 
+    /**
+     * 
+     * @param {*} width 
+     */
     setScaleWidth(width) {
         this.scaleWidth = width;
+        return this;
     }
 
+    /**
+     * 
+     * @param {*} height 
+     */
     setScaleHeight(height) {
         this.scaleHeight = height;
+        return this;
     }
 
+    /**
+     * 
+     * @param {*} alpha 
+     */
     setAlpha(alpha) {
         this.alpha = alpha;
+        return this;
     }
+
+    /**
+     * 
+     * @param {*} width 
+     */
+    setImageWidth(width) {
+        this.width = width;
+        return this;
+    }
+
+    /**
+     * 
+     * @param {*} height 
+     */
+    setImageHeight(height) {
+        this.height = height;
+        return this;
+    }
+
 }
 
 export default Texture;
