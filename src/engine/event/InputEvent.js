@@ -5,6 +5,9 @@ class InputEvent {
 
     }
 
+    /**
+     * Listen to input events
+     */
     listen() {
         window.addEventListener('keydown', KeyboardEvent.keyDown)
         window.addEventListener('keyup', KeyboardEvent.keyUp);

@@ -32,7 +32,6 @@ class Keyboard {
         state.keyCode = -1,
         state.keyName = ''
     }
-
     /**
      * Return true if key is pressed. 
      */
@@ -54,10 +53,16 @@ class Keyboard {
         return state.keyName == 'ArrowUp';
     }
 
+    /**
+     * 
+     */
     arrowRight() {
         return state.keyName == 'ArrowRight';
     }
 
+    /**
+     * 
+     */
     arrowLeft() {
         return state.keyName == 'ArrowLeft';
     }
