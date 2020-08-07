@@ -50,7 +50,7 @@ class HashMap{
     }
 
     /**
-     * 
+     * Check if key exist in hashmap
      * @param {*} key 
      */
     has(key) {
@@ -59,7 +59,7 @@ class HashMap{
     
 
     /**
-     * 
+     * Get item from hashmap
      * @param {*} key 
      */
     get(key) {
@@ -73,7 +73,7 @@ class HashMap{
     }
     
     /**
-     * 
+     * Set item in hashmap <any, any>.set()
      * @param {*} key 
      * @param {*} value 
      */
@@ -102,7 +102,7 @@ class HashMap{
     }
 
     /**
-     * 
+     * Remove item from hashmap
      * @param {*} key 
      */
     delete(key) {
