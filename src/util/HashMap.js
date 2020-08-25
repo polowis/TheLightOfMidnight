@@ -146,3 +146,5 @@ class HashMap{
         return this.size / this.buckets.length;
     }
 }
+
+export default HashMap;
