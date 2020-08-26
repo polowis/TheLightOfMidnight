@@ -1,8 +1,14 @@
-class Events{
+import Event from 'events';
+
+class Events extends Event.EventEmitter{
     constructor(ctx) {
         this.events = {}
         this.rv = init()
         this.rv.addEventType = add()
+    }
+
+    listen() {
+        
     }
 
     init(eventName, subscriber) {
@@ -14,4 +20,5 @@ class Events{
         }
     }
 }
+
 export default Events;
